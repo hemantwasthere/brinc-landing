@@ -8,3 +8,12 @@ build
 next-env.d.ts
 .vercel
 tsconfig.tsbuildinfo
+
+.claude
+.claude/
+.agents
+.agents/
+.context
+.context/
+CLAUDE.md
+AGENTS.md
