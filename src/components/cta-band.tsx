@@ -13,7 +13,10 @@ export function CtaBand() {
   return (
     <section id="start" className="scroll-mt-24 px-5 pb-20 sm:px-6 sm:pb-28">
       <Reveal>
-        <div className="relative mx-auto max-w-6xl overflow-hidden bg-ink px-6 py-14 sm:px-12 sm:py-20">
+        <div
+          data-nav-dark
+          className="relative mx-auto max-w-6xl overflow-hidden bg-ink px-6 py-14 sm:px-12 sm:py-20"
+        >
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand/25 blur-[90px]" />
             <div className="absolute -bottom-32 right-0 h-80 w-80 rounded-full bg-brand/15 blur-[110px]" />

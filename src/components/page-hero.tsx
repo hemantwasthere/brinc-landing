@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { HeroBackdrop } from "@/components/ornaments";
 import { Reveal } from "@/components/reveal";
 
 type PageHeroProps = {
@@ -14,7 +15,9 @@ export function PageHero({ eyebrow, title, copy, actions, meta }: PageHeroProps)
   return (
     <section className="relative overflow-hidden border-b border-line pb-16 pt-32 sm:pb-20 sm:pt-40">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="grid-paper mask-fade-b absolute inset-0" />
+        <div className="mask-fade-b absolute inset-0">
+          <HeroBackdrop />
+        </div>
         <div className="absolute left-1/2 top-[-22rem] h-[34rem] w-[46rem] -translate-x-1/2 bg-brand/10 blur-[120px]" />
       </div>
 

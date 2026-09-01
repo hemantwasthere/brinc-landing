@@ -84,13 +84,6 @@ body {
   transform: none;
 }
 
-.grid-paper {
-  background-image:
-    linear-gradient(to right, rgba(20, 19, 16, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20, 19, 16, 0.045) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-
 .mask-fade-x {
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }

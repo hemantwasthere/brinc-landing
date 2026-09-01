@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { GlobeIcon, LinkedInIcon, XIcon } from "@/components/icons";
 import type { Company } from "@/lib/companies";
 
 const stageTone: Record<string, string> = {
@@ -7,32 +8,35 @@ const stageTone: Record<string, string> = {
   Growth: "bg-brand-soft text-brand-ink",
 };
 
-function SocialLink({ href, label, path }: { href: string; label: string; path: string }) {
+function Mark({ company }: { company: Company }) {
+  if (company.logo) {
+    return (
+      <img
+        src={company.logo}
+        alt=""
+        width={36}
+        height={36}
+        loading="lazy"
+        decoding="async"
+        className="h-9 w-9 shrink-0 border border-line bg-white object-contain p-1"
+      />
+    );
+  }
+
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      aria-label={label}
-      className="relative z-10 cursor-pointer text-muted transition-colors hover:text-ink"
-    >
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d={path} />
-      </svg>
-    </a>
+    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-line bg-surface-2 font-mono text-[13px] uppercase text-ink-soft">
+      {company.name.slice(0, 1)}
+    </span>
   );
 }
-
-const linkedInPath =
-  "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.02-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21h-4V9Z";
-const xPath =
-  "M17.53 3h3.06l-6.69 7.64L21.75 21h-6.02l-4.7-6.15L5.6 21H2.53l7.15-8.17L2.25 3h6.17l4.25 5.62L17.53 3Zm-1.07 16.13h1.7L7.63 4.78H5.8l10.66 14.35Z";
 
 export function CompanyCard({ company }: { company: Company }) {
   return (
     <article className="group relative flex h-full flex-col border border-line bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-ink/20 hover:shadow-[0_28px_55px_-45px_rgba(20,19,16,0.75)]">
-      <div className="flex items-start justify-between gap-3">
-        <h3 className="text-[16.5px] tracking-[-0.02em] text-ink">
+      <div className="flex items-start gap-3">
+        <Mark company={company} />
+
+        <h3 className="flex-1 pt-1 text-[16.5px] leading-tight tracking-[-0.02em] text-ink">
           <a
             href={company.url}
             target="_blank"
@@ -52,24 +56,41 @@ export function CompanyCard({ company }: { company: Company }) {
         </span>
       </div>
 
-      <p className="mb-5 mt-3 line-clamp-3 text-[13px] leading-relaxed text-muted">{company.blurb}</p>
+      <p className="mb-5 mt-4 line-clamp-3 text-[13px] leading-relaxed text-muted">
+        {company.blurb}
+      </p>
 
       <div className="mt-auto flex items-center justify-between gap-3 border-t border-line-soft pt-3.5">
         <span className="text-[12.5px] text-ink-soft">{company.sector}</span>
 
         <span className="flex items-center gap-2.5">
           {company.linkedin ? (
-            <SocialLink
+            <a
               href={company.linkedin}
-              label={`${company.name} on LinkedIn`}
-              path={linkedInPath}
-            />
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={`${company.name} on LinkedIn`}
+              className="relative z-10 cursor-pointer text-muted transition-colors hover:text-ink"
+            >
+              <LinkedInIcon size={13} />
+            </a>
           ) : null}
+
           {company.x ? (
-            <SocialLink href={company.x} label={`${company.name} on X`} path={xPath} />
+            <a
+              href={company.x}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={`${company.name} on X`}
+              className="relative z-10 cursor-pointer text-muted transition-colors hover:text-ink"
+            >
+              <XIcon size={12} />
+            </a>
           ) : null}
-          <span className="font-mono text-[11px] text-muted transition-colors duration-300 group-hover:text-brand">
-            Visit &rarr;
+
+          <span className="flex items-center gap-1.5 text-muted transition-colors duration-300 group-hover:text-brand">
+            <GlobeIcon size={12} />
+            <span className="font-mono text-[11px]">Visit</span>
           </span>
         </span>
       </div>

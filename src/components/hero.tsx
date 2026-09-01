@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { CapitalFlow } from "@/components/capital-flow";
+import { HeroBackdrop } from "@/components/ornaments";
 import { Reveal } from "@/components/reveal";
 import { personas, type Persona } from "@/lib/data";
 
@@ -28,7 +29,9 @@ export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-28 sm:pt-32 lg:pt-40">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="grid-paper mask-fade-b absolute inset-0" />
+        <div className="mask-fade-b absolute inset-0">
+          <HeroBackdrop />
+        </div>
         <div className="absolute left-1/2 top-[-20rem] h-[36rem] w-[52rem] -translate-x-1/2 rounded-full bg-brand/10 blur-[120px]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
       </div>

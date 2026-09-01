@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { SectionBackdrop } from "@/components/ornaments";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { useInView } from "@/hooks/use-in-view";
@@ -57,8 +58,12 @@ export function Flywheel() {
   }, [paused, inView]);
 
   return (
-    <section className="border-t border-line py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+    <section className="relative overflow-hidden border-t border-line py-20 sm:py-28">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <SectionBackdrop variant="a" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
         <SectionHeading
           index="02"
           eyebrow="The model"

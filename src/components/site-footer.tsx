@@ -1,6 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 
+import { InstagramIcon, LinkedInIcon, XIcon, YouTubeIcon } from "@/components/icons";
 import { Logo } from "@/components/logo";
 import { site } from "@/lib/data";
 
@@ -26,10 +27,10 @@ const columns = [
   {
     title: "Social",
     links: [
-      { label: "LinkedIn", href: site.linkedin, external: true },
-      { label: "X", href: site.x, external: true },
-      { label: "Instagram", href: site.instagram, external: true },
-      { label: "YouTube", href: site.youtube, external: true },
+      { label: "LinkedIn", href: site.linkedin, external: true, icon: <LinkedInIcon size={13} /> },
+      { label: "X", href: site.x, external: true, icon: <XIcon size={12} /> },
+      { label: "Instagram", href: site.instagram, external: true, icon: <InstagramIcon size={13} /> },
+      { label: "YouTube", href: site.youtube, external: true, icon: <YouTubeIcon size={14} /> },
     ],
   },
 ];
@@ -68,8 +69,13 @@ export function SiteFooter() {
                         href={link.href}
                         target="_blank"
                         rel="noreferrer noopener"
-                        className="cursor-pointer text-[13.5px] text-ink-soft transition-colors hover:text-brand"
+                        className="group inline-flex cursor-pointer items-center gap-2 text-[13.5px] text-ink-soft transition-colors hover:text-brand"
                       >
+                        {"icon" in link && link.icon ? (
+                          <span className="flex h-6 w-6 items-center justify-center border border-line bg-white text-muted transition-colors group-hover:border-brand/40 group-hover:text-brand">
+                            {link.icon}
+                          </span>
+                        ) : null}
                         {link.label}
                       </a>
                     ) : (

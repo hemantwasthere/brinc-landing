@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { SectionBackdrop } from "@/components/ornaments";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { journey } from "@/lib/data";
@@ -22,8 +23,12 @@ export function Journey({ index = "03" }: { index?: string }) {
   }, [inView]);
 
   return (
-    <section className="border-t border-line bg-surface/40 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+    <section className="relative overflow-hidden border-t border-line bg-surface/40 py-20 sm:py-28">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <SectionBackdrop variant="b" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
         <SectionHeading
           index={index}
           eyebrow="The path"

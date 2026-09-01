@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { Logo } from "@/components/logo";
 import { site } from "@/lib/data";
+import { useNavTheme } from "@/hooks/use-nav-theme";
 import { useScrollState } from "@/hooks/use-scroll-state";
 
 const links = [
@@ -17,6 +18,7 @@ const links = [
 
 export function SiteNav() {
   const scrolled = useScrollState(16);
+  const dark = useNavTheme();
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
 
@@ -36,17 +38,21 @@ export function SiteNav() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const solid = scrolled || dark;
+
+  const shell = dark
+    ? "border-white/12 bg-ink/90 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+    : "border-line bg-white/90 shadow-[0_1px_2px_rgba(20,19,16,0.04),0_12px_40px_-24px_rgba(20,19,16,0.35)] backdrop-blur-xl";
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6">
       <nav
         className={`mx-auto flex max-w-6xl items-center justify-between border px-4 py-2.5 transition-all duration-500 sm:px-5 ${
-          scrolled
-            ? "border-line bg-white/85 shadow-[0_1px_2px_rgba(20,19,16,0.04),0_12px_40px_-24px_rgba(20,19,16,0.35)] backdrop-blur-xl"
-            : "border-transparent bg-transparent"
+          solid ? shell : "border-transparent bg-transparent"
         }`}
       >
         <Link href="/" className="cursor-pointer" aria-label="Brinc home">
-          <Logo />
+          <Logo tone={dark ? "light" : "dark"} />
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
@@ -57,8 +63,14 @@ export function SiteNav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`group relative cursor-pointer px-3 py-2 text-[13.5px] transition-colors ${
-                    isActive ? "text-ink" : "text-ink-soft hover:text-ink"
+                  className={`group relative cursor-pointer px-3 py-2 text-[13.5px] transition-colors duration-500 ${
+                    dark
+                      ? isActive
+                        ? "text-white"
+                        : "text-white/60 hover:text-white"
+                      : isActive
+                        ? "text-ink"
+                        : "text-ink-soft hover:text-ink"
                   }`}
                 >
                   {link.label}
@@ -76,14 +88,20 @@ export function SiteNav() {
         <div className="flex items-center gap-2">
           <a
             href={`mailto:${site.email}`}
-            className="hidden cursor-pointer px-3.5 py-2 text-[13.5px] text-ink-soft transition-colors hover:bg-surface-2 hover:text-ink sm:block"
+            className={`hidden cursor-pointer px-3.5 py-2 text-[13.5px] transition-colors duration-500 sm:block ${
+              dark
+                ? "text-white/60 hover:bg-white/10 hover:text-white"
+                : "text-ink-soft hover:bg-surface-2 hover:text-ink"
+            }`}
           >
             Contact
           </a>
 
           <a
             href="#start"
-            className="group cursor-pointer bg-ink px-4 py-2 text-[13.5px] font-medium text-white transition-all duration-300 hover:bg-brand"
+            className={`group cursor-pointer px-4 py-2 text-[13.5px] font-medium transition-all duration-500 ${
+              dark ? "bg-white text-ink hover:bg-brand hover:text-white" : "bg-ink text-white hover:bg-brand"
+            }`}
           >
             Get started
             <span className="ml-1.5 inline-block transition-transform duration-300 group-hover:translate-x-0.5">
@@ -96,7 +114,11 @@ export function SiteNav() {
             onClick={() => setOpen((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={open}
-            className="cursor-pointer border border-line bg-white p-2 text-ink transition-colors hover:bg-surface-2 md:hidden"
+            className={`cursor-pointer border p-2 transition-colors duration-500 md:hidden ${
+              dark
+                ? "border-white/15 bg-white/5 text-white hover:bg-white/15"
+                : "border-line bg-white text-ink hover:bg-surface-2"
+            }`}
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path
@@ -111,9 +133,11 @@ export function SiteNav() {
       </nav>
 
       <div
-        className={`mx-auto mt-2 max-w-6xl overflow-hidden border bg-white/95 backdrop-blur-xl transition-all duration-500 md:hidden ${
+        className={`mx-auto mt-2 max-w-6xl overflow-hidden border backdrop-blur-xl transition-all duration-500 md:hidden ${
+          dark ? "bg-ink/95" : "bg-white/95"
+        } ${
           open
-            ? "max-h-80 border-line opacity-100 shadow-[0_20px_60px_-30px_rgba(20,19,16,0.5)]"
+            ? `max-h-80 opacity-100 shadow-[0_20px_60px_-30px_rgba(20,19,16,0.5)] ${dark ? "border-white/12" : "border-line"}`
             : "max-h-0 border-transparent opacity-0"
         }`}
       >
@@ -122,7 +146,11 @@ export function SiteNav() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="block cursor-pointer px-3 py-2.5 text-sm text-ink-soft transition-colors hover:bg-surface-2 hover:text-ink"
+                className={`block cursor-pointer px-3 py-2.5 text-sm transition-colors ${
+                  dark
+                    ? "text-white/70 hover:bg-white/10 hover:text-white"
+                    : "text-ink-soft hover:bg-surface-2 hover:text-ink"
+                }`}
               >
                 {link.label}
               </Link>
@@ -131,7 +159,11 @@ export function SiteNav() {
           <li>
             <a
               href={`mailto:${site.email}`}
-              className="block cursor-pointer px-3 py-2.5 text-sm text-ink-soft transition-colors hover:bg-surface-2 hover:text-ink"
+              className={`block cursor-pointer px-3 py-2.5 text-sm transition-colors ${
+                dark
+                  ? "text-white/70 hover:bg-white/10 hover:text-white"
+                  : "text-ink-soft hover:bg-surface-2 hover:text-ink"
+              }`}
             >
               Contact
             </a>

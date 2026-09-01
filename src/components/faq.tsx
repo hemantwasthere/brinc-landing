@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { SectionBackdrop } from "@/components/ornaments";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { faqs } from "@/lib/data";
@@ -10,8 +11,12 @@ export function Faq() {
   const [open, setOpen] = React.useState<number | null>(0);
 
   return (
-    <section className="border-t border-line py-20 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-16">
+    <section className="relative overflow-hidden border-t border-line py-20 sm:py-28">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <SectionBackdrop variant="c" />
+      </div>
+
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-16">
         <div>
           <SectionHeading
             index="06"

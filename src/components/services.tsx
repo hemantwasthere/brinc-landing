@@ -1,7 +1,8 @@
 import * as React from "react";
 
-import { FounderArt, InvestorArt, PartnerArt } from "@/components/service-art";
+import { SectionBackdrop } from "@/components/ornaments";
 import { Reveal } from "@/components/reveal";
+import { FounderArt, InvestorArt, PartnerArt } from "@/components/service-art";
 import { SectionHeading } from "@/components/section-heading";
 import { services } from "@/lib/data";
 
@@ -13,8 +14,12 @@ const art: Record<string, React.ReactNode> = {
 
 export function Services() {
   return (
-    <section className="border-t border-line bg-surface/40 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+    <section className="relative overflow-hidden border-t border-line bg-surface/40 py-20 sm:py-28">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <SectionBackdrop variant="c" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
         <SectionHeading
           index="01"
           eyebrow="What we do"
