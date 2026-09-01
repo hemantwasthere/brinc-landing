@@ -32,7 +32,7 @@ export function Services() {
             <Reveal key={service.id} delay={index * 110} className="h-full">
               <article
                 id={service.id}
-                className="group flex h-full scroll-mt-28 flex-col rounded-2xl border border-line bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-ink/15 hover:shadow-[0_30px_60px_-45px_rgba(20,19,16,0.7)] sm:p-6"
+                className="group flex h-full scroll-mt-28 flex-col border border-line bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-ink/15 hover:shadow-[0_30px_60px_-45px_rgba(20,19,16,0.7)] sm:p-6"
               >
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-brand" />
@@ -57,6 +57,16 @@ export function Services() {
                     </div>
                   ))}
                 </div>
+
+                <a
+                  href={service.href}
+                  className="mt-5 flex cursor-pointer items-center justify-between border border-line px-3.5 py-2.5 text-[13px] font-medium text-ink transition-colors hover:border-ink/25 hover:bg-surface"
+                >
+                  {service.linkLabel}
+                  <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                    &rarr;
+                  </span>
+                </a>
               </article>
             </Reveal>
           ))}

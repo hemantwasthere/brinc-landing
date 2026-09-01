@@ -25,7 +25,7 @@ export function Faq() {
           />
 
           <Reveal delay={160}>
-            <div className="mt-8 rounded-2xl border border-line bg-surface/60 p-5">
+            <div className="mt-8 border border-line bg-surface/60 p-5">
               <p className="text-[14.5px] text-ink">Still deciding which door to use?</p>
               <p className="mt-2 text-[13.5px] leading-relaxed text-muted">
                 Send one line about what you are building or backing. We will point you at the
@@ -34,7 +34,7 @@ export function Faq() {
 
               <a
                 href="mailto:marketing@brinc.io"
-                className="group mt-4 inline-flex cursor-pointer items-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-[13.5px] font-medium text-white transition-colors hover:bg-brand"
+                className="group mt-4 inline-flex cursor-pointer items-center gap-2 bg-ink px-4 py-2.5 text-[13.5px] font-medium text-white transition-colors hover:bg-brand"
               >
                 marketing@brinc.io
                 <span className="transition-transform duration-300 group-hover:translate-x-0.5">
@@ -83,7 +83,7 @@ export function Faq() {
                   </span>
 
                   <span
-                    className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                    className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center border transition-all duration-300 ${
                       isOpen
                         ? "rotate-45 border-brand bg-brand text-white"
                         : "border-line text-muted group-hover:border-ink/30"

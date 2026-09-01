@@ -39,7 +39,7 @@ export function Metrics() {
     <section className="mx-auto max-w-6xl px-5 py-20 sm:px-6 sm:py-24">
       <div
         ref={ref}
-        className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4"
+        className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4"
       >
         {metrics.map((metric, index) => (
           <MetricItem key={metric.label} metric={metric} active={inView} index={index} />

@@ -14,7 +14,7 @@ function Row({ items, reverse = false }: { items: string[]; reverse?: boolean })
         {loop.map((item, index) => (
           <span
             key={`${item}-${index}`}
-            className="whitespace-nowrap rounded-xl border border-line bg-white px-4 py-2 text-[13px] text-ink-soft transition-colors hover:border-brand/40 hover:text-ink"
+            className="whitespace-nowrap border border-line bg-white px-4 py-2 text-[13px] text-ink-soft transition-colors hover:border-brand/40 hover:text-ink"
           >
             {item}
           </span>

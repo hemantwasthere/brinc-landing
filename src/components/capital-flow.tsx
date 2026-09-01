@@ -64,7 +64,7 @@ function NodeCard({
   return (
     <div
       style={style}
-      className={`rounded-xl border p-3 transition-all duration-500 ${
+      className={`border p-3 transition-all duration-500 ${
         isActive
           ? "border-brand/35 bg-brand-soft shadow-[0_12px_30px_-20px_rgba(255,90,31,0.9)]"
           : "border-line bg-white"
@@ -84,8 +84,8 @@ function NodeCard({
 
 function Core() {
   return (
-    <div className="relative rounded-2xl border border-ink bg-ink p-3 text-center shadow-[0_24px_50px_-28px_rgba(20,19,16,0.9)]">
-      <span className="absolute inset-0 -z-10 animate-pulse-ring rounded-2xl border border-brand/40" />
+    <div className="relative border border-ink bg-ink p-3 text-center shadow-[0_24px_50px_-28px_rgba(20,19,16,0.9)]">
+      <span className="absolute inset-0 -z-10 animate-pulse-ring border border-brand/40" />
       <p className="text-[13px] font-semibold tracking-[-0.02em] text-white sm:text-[14px]">
         Brinc
       </p>
@@ -183,7 +183,7 @@ export function CapitalFlow({ persona }: { persona: Persona }) {
                   className="animate-dash transition-[stroke,opacity] duration-500"
                   style={{
                     opacity: isActive ? 1 : 0.45,
-                    animationDuration: isActive ? "1.6s" : "4.5s",
+                    animationDuration: isActive ? "5s" : "13s",
                   }}
                 />
               </g>

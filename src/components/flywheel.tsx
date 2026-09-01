@@ -151,7 +151,7 @@ export function Flywheel() {
                   }}
                   onFocus={() => setActiveIndex(index)}
                   onClick={() => setActiveIndex(index)}
-                  className={`w-full cursor-pointer rounded-2xl border p-4 text-left transition-all duration-500 sm:p-5 ${
+                  className={`w-full cursor-pointer border p-4 text-left transition-all duration-500 sm:p-5 ${
                     index === activeIndex
                       ? "border-brand/30 bg-brand-soft"
                       : "border-transparent bg-transparent hover:border-line hover:bg-surface"

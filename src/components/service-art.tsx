@@ -18,7 +18,7 @@ export function InvestorArt() {
       {deals.map((deal, index) => (
         <div
           key={deal.name}
-          className="rounded-xl border border-line bg-white px-3 py-2.5 transition-colors duration-300 hover:border-brand/40"
+          className="border border-line bg-white px-3 py-2.5 transition-colors duration-300 hover:border-brand/40"
         >
           <div className="flex items-center justify-between gap-3">
             <span className="flex items-center gap-2 text-[12.5px] font-medium text-ink">
@@ -31,9 +31,9 @@ export function InvestorArt() {
           </div>
 
           <div className="mt-2 flex items-center gap-2">
-            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-2">
+            <div className="h-1.5 flex-1 overflow-hidden bg-surface-2">
               <div
-                className="h-full rounded-full bg-brand transition-[width] duration-1000 ease-out"
+                className="h-full bg-brand transition-[width] duration-1000 ease-out"
                 style={{
                   width: inView ? `${deal.fill}%` : "0%",
                   transitionDelay: `${index * 140}ms`,
@@ -63,7 +63,7 @@ export function PartnerArt() {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.4 });
 
   return (
-    <div ref={ref} className="rounded-xl border border-line bg-white p-3.5">
+    <div ref={ref} className="border border-line bg-white p-3.5">
       <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-muted">
         One program cycle
       </p>
@@ -76,9 +76,9 @@ export function PartnerArt() {
               <span className="font-mono text-[12px] tabular-nums text-ink">{stage.value}</span>
             </div>
 
-            <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-surface-2">
+            <div className="mt-1.5 h-2 overflow-hidden bg-surface-2">
               <div
-                className={`h-full rounded-full transition-[width] duration-[900ms] ease-out ${
+                className={`h-full transition-[width] duration-[900ms] ease-out ${
                   index === funnel.length - 1 ? "bg-ink" : "bg-brand/70"
                 }`}
                 style={{
@@ -105,7 +105,7 @@ export function FounderArt() {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.4 });
 
   return (
-    <div ref={ref} className="rounded-xl border border-line bg-white p-3.5">
+    <div ref={ref} className="border border-line bg-white p-3.5">
       <div className="flex items-baseline justify-between">
         <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-muted">
           Typical trajectory

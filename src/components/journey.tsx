@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { journey } from "@/lib/data";
 import { useInView } from "@/hooks/use-in-view";
 
-export function Journey() {
+export function Journey({ index = "03" }: { index?: string }) {
   const [active, setActive] = React.useState(0);
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.25 });
 
@@ -25,7 +25,7 @@ export function Journey() {
     <section className="border-t border-line bg-surface/40 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <SectionHeading
-          index="03"
+          index={index}
           eyebrow="The path"
           title={
             <>
@@ -53,14 +53,14 @@ export function Journey() {
                   >
                     <div className="flex items-center gap-3 lg:block">
                       <span
-                        className={`relative z-10 flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border bg-white font-mono text-[12px] transition-all duration-500 ${
+                        className={`relative z-10 flex h-[52px] w-[52px] shrink-0 items-center justify-center border bg-white font-mono text-[12px] transition-all duration-500 ${
                           index <= active
                             ? "border-brand text-brand"
                             : "border-line text-muted"
                         }`}
                       >
                         {index === active ? (
-                          <span className="absolute inset-0 animate-pulse-ring rounded-full border border-brand/50" />
+                          <span className="absolute inset-0 animate-pulse-ring border border-brand/50" />
                         ) : null}
                         {stage.step}
                       </span>

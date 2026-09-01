@@ -1,33 +1,35 @@
 import * as React from "react";
+import Link from "next/link";
 
 import { Logo } from "@/components/logo";
+import { site } from "@/lib/data";
 
 const columns = [
   {
     title: "Network",
     links: [
-      { label: "Investors", href: "#investors" },
-      { label: "Partners", href: "#partners" },
-      { label: "Founders", href: "#founders" },
-      { label: "Portfolio", href: "#portfolio" },
+      { label: "Investors", href: "/investors" },
+      { label: "Partners", href: "/partners" },
+      { label: "Founders", href: "/founders" },
+      { label: "Portfolio", href: "/portfolio" },
     ],
   },
   {
-    title: "Company",
+    title: "Platforms",
     links: [
-      { label: "About", href: "#top" },
-      { label: "Programs", href: "#partners" },
-      { label: "Careers", href: "#start" },
-      { label: "Contact", href: "mailto:marketing@brinc.io" },
+      { label: "VentureVerse", href: site.ventureverse, external: true },
+      { label: "Founder community", href: site.community, external: true },
+      { label: "UpRound club", href: site.upround, external: true },
+      { label: "Apply to a program", href: site.apply, external: true },
     ],
   },
   {
     title: "Social",
     links: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/company/brinc" },
-      { label: "YouTube", href: "https://www.youtube.com/@brincio" },
-      { label: "Instagram", href: "https://www.instagram.com/brinc.io" },
-      { label: "X", href: "https://x.com/brinc_io" },
+      { label: "LinkedIn", href: site.linkedin, external: true },
+      { label: "X", href: site.x, external: true },
+      { label: "Instagram", href: site.instagram, external: true },
+      { label: "YouTube", href: site.youtube, external: true },
     ],
   },
 ];
@@ -45,10 +47,10 @@ export function SiteFooter() {
             </p>
 
             <a
-              href="mailto:marketing@brinc.io"
-              className="mt-5 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-line bg-white px-3.5 py-2 text-[13px] text-ink transition-colors hover:border-brand/40 hover:bg-brand-soft"
+              href={`mailto:${site.email}`}
+              className="mt-5 inline-flex cursor-pointer items-center gap-2 border border-line bg-white px-3.5 py-2 text-[13px] text-ink transition-colors hover:border-brand/40 hover:bg-brand-soft"
             >
-              marketing@brinc.io
+              {site.email}
             </a>
           </div>
 
@@ -61,12 +63,23 @@ export function SiteFooter() {
               <ul className="mt-4 space-y-2.5">
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="cursor-pointer text-[13.5px] text-ink-soft transition-colors hover:text-brand"
-                    >
-                      {link.label}
-                    </a>
+                    {"external" in link && link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="cursor-pointer text-[13.5px] text-ink-soft transition-colors hover:text-brand"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="cursor-pointer text-[13.5px] text-ink-soft transition-colors hover:text-brand"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -81,13 +94,17 @@ export function SiteFooter() {
 
           <div className="flex gap-5">
             <a
-              href="#top"
+              href="https://brinc.io/terms-of-use"
+              target="_blank"
+              rel="noreferrer noopener"
               className="cursor-pointer text-[12.5px] text-muted transition-colors hover:text-ink"
             >
               Terms of Use
             </a>
             <a
-              href="#top"
+              href="https://brinc.io/privacy-policy"
+              target="_blank"
+              rel="noreferrer noopener"
               className="cursor-pointer text-[12.5px] text-muted transition-colors hover:text-ink"
             >
               Privacy Policy
