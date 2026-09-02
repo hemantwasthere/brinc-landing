@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import * as React from "react";
 
 import { CtaBand } from "@/components/cta-band";
+import { JsonLd } from "@/components/json-ld";
 import { Marquee } from "@/components/marquee";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
@@ -10,11 +11,35 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
 import { companies, sectorOrder } from "@/lib/companies";
 import { investorCriteria, journey, site } from "@/lib/data";
+import { absolute, breadcrumbSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Investors — Brinc",
+  title: "Investors — Co-invest in private markets",
   description:
-    "Co-invest alongside operators who ran the program. Deal-by-deal allocations into pre-seed to Series A companies across 36+ countries.",
+    "Co-invest with Brinc deal by deal. Accredited investors and partner firms back pre-seed to Series A companies across 36+ countries, with diligence from the team that ran the program.",
+  keywords: [
+    "co-investment",
+    "private market investing",
+    "pre-seed investment",
+    "seed stage venture capital",
+    "syndicate investing",
+    "emerging market startups",
+    "Brinc investors",
+  ],
+  alternates: { canonical: "/investors" },
+  openGraph: {
+    type: "website",
+    url: absolute("/investors"),
+    title: "Investors — Co-invest in private markets",
+    description:
+      "Co-invest with Brinc deal by deal. Accredited investors and partner firms back pre-seed to Series A companies across 36+ countries, with diligence from the team that ran the program.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Investors — Co-invest in private markets",
+    description:
+      "Co-invest with Brinc deal by deal. Accredited investors and partner firms back pre-seed to Series A companies across 36+ countries, with diligence from the team that ran the program.",
+  },
 };
 
 const sectors = sectorOrder
@@ -29,6 +54,18 @@ const maxCount = Math.max(...sectors.map((item) => item.count));
 export default function InvestorsPage() {
   return (
     <main className="relative">
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: "/investors",
+            name: "Investors — Co-invest in private markets",
+            description:
+              "Co-invest with Brinc deal by deal. Accredited investors and partner firms back pre-seed to Series A companies across 36+ countries, with diligence from the team that ran the program.",
+          }),
+          breadcrumbSchema([{ name: "Investors", path: "/investors" }]),
+        ]}
+      />
+
       <SiteNav />
 
       <PageHero

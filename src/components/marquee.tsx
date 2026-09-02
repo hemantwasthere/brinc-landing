@@ -3,17 +3,30 @@ import * as React from "react";
 import { coInvestors, partners } from "@/lib/data";
 
 function Row({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
-  const loop = [...items, ...items];
-
   return (
     <div className="mask-fade-x flex overflow-hidden">
       <div
         className="flex shrink-0 animate-marquee items-center gap-3 pr-3"
         style={{ animationDirection: reverse ? "reverse" : "normal" }}
       >
-        {loop.map((item, index) => (
+        {items.map((item) => (
           <span
-            key={`${item}-${index}`}
+            key={item}
+            className="whitespace-nowrap border border-line bg-white px-4 py-2 text-[13px] text-ink-soft transition-colors hover:border-brand/40 hover:text-ink"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="flex shrink-0 animate-marquee items-center gap-3 pr-3"
+        style={{ animationDirection: reverse ? "reverse" : "normal" }}
+      >
+        {items.map((item) => (
+          <span
+            key={item}
             className="whitespace-nowrap border border-line bg-white px-4 py-2 text-[13px] text-ink-soft transition-colors hover:border-brand/40 hover:text-ink"
           >
             {item}

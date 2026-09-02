@@ -3,22 +3,60 @@ import * as React from "react";
 
 import { CtaBand } from "@/components/cta-band";
 import { Footprint } from "@/components/footprint";
+import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
 import { caseStudies, partnerPillars, site } from "@/lib/data";
+import { absolute, breadcrumbSchema, servicesSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Partners — Brinc",
+  title: "Partners — Corporate & government innovation",
   description:
-    "Where corporates and governments meet innovation. Scouting, accelerator programs and POC execution delivered with NEOM, PepsiCo, Misk, MBRIF, HKSTP and more.",
+    "Brinc designs and delivers innovation programs for corporates, governments and institutions. Scouting, accelerators and POC execution run with NEOM, PepsiCo, Misk, MBRIF and HKSTP.",
+  keywords: [
+    "corporate innovation programs",
+    "government accelerator",
+    "open innovation",
+    "startup scouting",
+    "proof of concept pilots",
+    "sovereign innovation",
+    "Brinc partners",
+  ],
+  alternates: { canonical: "/partners" },
+  openGraph: {
+    type: "website",
+    url: absolute("/partners"),
+    title: "Partners — Corporate & government innovation",
+    description:
+      "Brinc designs and delivers innovation programs for corporates, governments and institutions. Scouting, accelerators and POC execution run with NEOM, PepsiCo, Misk, MBRIF and HKSTP.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Partners — Corporate & government innovation",
+    description:
+      "Brinc designs and delivers innovation programs for corporates, governments and institutions. Scouting, accelerators and POC execution run with NEOM, PepsiCo, Misk, MBRIF and HKSTP.",
+  },
 };
 
 export default function PartnersPage() {
   return (
     <main className="relative">
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: "/partners",
+            name: "Partners — Corporate & government innovation",
+            description:
+              "Brinc designs and delivers innovation programs for corporates, governments and institutions. Scouting, accelerators and POC execution run with NEOM, PepsiCo, Misk, MBRIF and HKSTP.",
+          }),
+          breadcrumbSchema([{ name: "Partners", path: "/partners" }]),
+          servicesSchema(),
+        ]}
+      />
+
       <SiteNav />
 
       <PageHero

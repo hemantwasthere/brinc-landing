@@ -3,22 +3,60 @@ import * as React from "react";
 
 import { CtaBand } from "@/components/cta-band";
 import { Journey } from "@/components/journey";
+import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
 import { offerings, programs, site, testimonials, upcomingPrograms } from "@/lib/data";
+import { absolute, breadcrumbSchema, programsSchema, webPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Founders — Brinc",
+  title: "Founders — Accelerator programs & funding",
   description:
-    "Capital, mentorship and market access for founders. Ten live programs across Hong Kong, the UAE, Saudi Arabia, Bahrain and India.",
+    "Capital, mentorship and market access for founders. Ten live Brinc programs across Hong Kong, the UAE, Saudi Arabia, Bahrain and India, with an average post-program first raise of $2.35M.",
+  keywords: [
+    "startup accelerator",
+    "apply to accelerator",
+    "pre-seed funding",
+    "founder programs",
+    "Web3 accelerator",
+    "climate tech accelerator",
+    "startup mentorship",
+  ],
+  alternates: { canonical: "/founders" },
+  openGraph: {
+    type: "website",
+    url: absolute("/founders"),
+    title: "Founders — Accelerator programs & funding",
+    description:
+      "Capital, mentorship and market access for founders. Ten live Brinc programs across Hong Kong, the UAE, Saudi Arabia, Bahrain and India, with an average post-program first raise of $2.35M.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Founders — Accelerator programs & funding",
+    description:
+      "Capital, mentorship and market access for founders. Ten live Brinc programs across Hong Kong, the UAE, Saudi Arabia, Bahrain and India, with an average post-program first raise of $2.35M.",
+  },
 };
 
 export default function FoundersPage() {
   return (
     <main className="relative">
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: "/founders",
+            name: "Founders — Accelerator programs & funding",
+            description:
+              "Capital, mentorship and market access for founders. Ten live Brinc programs across Hong Kong, the UAE, Saudi Arabia, Bahrain and India, with an average post-program first raise of $2.35M.",
+          }),
+          breadcrumbSchema([{ name: "Founders", path: "/founders" }]),
+          programsSchema(),
+        ]}
+      />
+
       <SiteNav />
 
       <PageHero

@@ -13,7 +13,7 @@ function Mark({ company }: { company: Company }) {
     return (
       <img
         src={company.logo}
-        alt=""
+        alt={`${company.name} logo`}
         width={36}
         height={36}
         loading="lazy"
